@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Van Board | Pre-Designed &amp; Bespoke Campervan Furniture</title>
+<meta name="description" content="CNC-cut campervan furniture kits and bespoke conversions, built in-house in Deeside. Solid oak worktops, flush-fit hardware, delivered nationwide.">
+<link rel="icon" href="images/logo.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --vb-black:#0D0D0D;
+  --vb-charcoal:#2A2A2A;
+  --vb-charcoal-lift:#34383C;
+  --vb-white:#F5F5F2;
+  --vb-grey:#A8A29E;
+  --vb-oak:#D6C3A3;
+  --vb-gold:#B8912F;
+  --vb-gold-hi:#D4AB42;
+  --vb-line:rgba(245,245,242,0.10);
+  --r:6px;
+  --ease:0.3s ease;
+}
+
+*,*::before,*::after{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--vb-black);
+  color:var(--vb-grey);
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  font-size:1.0625rem;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{display:block;max-width:100%;}
+a{color:inherit;}
+
+h1,h2,h3{
+  font-family:'Archivo',system-ui,sans-serif;
+  color:var(--vb-white);
+  text-transform:uppercase;
+  letter-spacing:-0.01em;
+  margin:0;
+}
+h1{font-weight:800;font-size:clamp(2.75rem,6vw,4.75rem);line-height:1.05;}
+h2{font-weight:700;font-size:clamp(2rem,3.5vw,2.85rem);line-height:1.15;}
+h3{font-weight:700;font-size:1.35rem;line-height:1.25;}
+p{margin:0 0 1.1rem;}
+p:last-child{margin-bottom:0;}
+strong{color:var(--vb-white);font-weight:500;}
+
+.wrap{width:100%;max-width:1240px;margin:0 auto;padding-left:24px;padding-right:24px;}
+
+.eyebrow{
+  font-family:'Archivo',sans-serif;
+  font-weight:600;
+  font-size:0.75rem;
+  text-transform:uppercase;
+  letter-spacing:0.18em;
+  color:var(--vb-oak);
+  display:block;
+  margin:0 0 0.9rem;
+}
+.hairline{
+  width:120px;height:1px;border:0;margin:0 0 1.4rem;
+  background:linear-gradient(90deg,rgba(184,145,47,0) 0%,rgba(184,145,47,0.45) 50%,rgba(184,145,47,0) 100%);
+}
+.hairline.center{margin-left:auto;margin-right:auto;}
+.lede{max-width:58ch;}
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-block;
+  font-family:'Archivo',sans-serif;
+  font-weight:600;
+  font-size:0.9375rem;
+  line-height:1;
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+  text-decoration:none;
+  padding-top:0.95rem;padding-bottom:0.95rem;
+  padding-left:2rem;padding-right:2rem;
+  border-radius:var(--r);
+  cursor:pointer;
+  transition:transform 0.25s ease,background 0.25s ease,box-shadow 0.25s ease,border-color 0.25s ease,color 0.25s ease;
+}
+.btn-primary{
+  background:var(--vb-gold);
+  color:var(--vb-black);
+  border:1px solid var(--vb-gold);
+  box-shadow:0 4px 14px rgba(0,0,0,0.45);
+}
+.btn-primary:hover{
+  background:var(--vb-gold-hi);
+  border-color:var(--vb-gold-hi);
+  transform:translateY(-2px);
+  box-shadow:0 8px 22px rgba(0,0,0,0.55);
+}
+.btn-secondary{
+  background:transparent;
+  color:var(--vb-white);
+  border:1px solid rgba(245,245,242,0.22);
+}
+.btn-secondary:hover{
+  border-color:var(--vb-gold);
+  color:var(--vb-gold);
+  transform:translateY(-2px);
+}
+.btn:focus-visible,a:focus-visible,button:focus-visible{
+  outline:2px solid var(--vb-gold-hi);
+  outline-offset:3px;
+}
+.btn-whatsapp{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:0.7rem;
+  width:100%;
+}
+.btn-whatsapp svg{
+  width:20px;height:20px;
+  fill:currentColor;
+  flex:0 0 auto;
+}
+.cta-note{
+  margin-top:0.9rem;
+  margin-bottom:0;
+  font-size:0.8125rem;
+  text-align:center;
+  color:var(--vb-grey);
+}
+
+/* ---------- Nav (full-bleed: hero is a dark photo) ---------- */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  max-width:100%;
+  padding-top:14px;padding-bottom:14px;
+  padding-left:40px;padding-right:40px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(13,13,13,0.35);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid transparent;
+  transition:background var(--ease),border-color var(--ease);
+}
+.nav.scrolled{
+  background:rgba(13,13,13,0.92);
+  border-bottom-color:var(--vb-line);
+}
+.nav-logo{height:52px;width:auto;}
+.nav-links{display:flex;align-items:center;gap:2.1rem;list-style:none;margin:0;padding:0;}
+.nav-links a{
+  font-family:'Archivo',sans-serif;
+  font-weight:600;
+  font-size:0.8125rem;
+  text-transform:uppercase;
+  letter-spacing:0.1em;
+  color:var(--vb-grey);
+  text-decoration:none;
+  transition:color 0.25s ease;
+}
+.nav-links a:hover,.nav-links a.active{color:var(--vb-gold);}
+.nav-links .btn{padding-top:0.75rem;padding-bottom:0.75rem;padding-left:1.5rem;padding-right:1.5rem;font-size:0.8125rem;color:var(--vb-black);}
+.nav-links .btn:hover{color:var(--vb-black);}
+
+.burger{
+  display:none;
+  background:none;border:0;padding:10px;cursor:pointer;
+  width:44px;height:44px;
+  flex-direction:column;justify-content:center;gap:5px;
+}
+.burger span{
+  display:block;width:24px;height:2px;background:var(--vb-white);
+  transition:transform var(--ease),opacity var(--ease);
+}
+.nav.open .burger span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav.open .burger span:nth-child(2){opacity:0;}
+.nav.open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+/* ---------- Hero ---------- */
+.hero{
+  position:relative;
+  min-height:100svh;
+  display:flex;align-items:flex-end;
+  padding-top:9rem;padding-bottom:4.5rem;
+  overflow:hidden;
+}
+.hero-img{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:cover;
+  filter:saturate(0.92) contrast(1.06);
+}
+.hero::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(13,13,13,0.15) 0%,rgba(13,13,13,0.55) 55%,rgba(13,13,13,0.92) 100%);
+}
+.hero .wrap{position:relative;z-index:2;}
+.hero h1{margin-bottom:1.4rem;max-width:16ch;}
+.hero p{max-width:52ch;color:var(--vb-white);font-size:1.15rem;margin-bottom:2rem;}
+.hero-cta{display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:3rem;}
+
+/* Trust strip: dark translucent pills (hero photo is dark/busy) */
+.trust{display:flex;flex-wrap:wrap;gap:0.75rem;list-style:none;margin:0;padding:0;}
+.trust li{
+  font-family:'Archivo',sans-serif;
+  font-size:1rem;
+  font-weight:600;
+  color:var(--vb-white);
+  background:rgba(13,13,13,0.55);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  border:1px solid rgba(184,145,47,0.35);
+  border-radius:999px;
+  padding-top:0.6rem;padding-bottom:0.6rem;
+  padding-left:1.25rem;padding-right:1.25rem;
+}
+
+/* ---------- Sections ---------- */
+.section{padding-top:7rem;padding-bottom:7rem;}
+.section-head{margin-bottom:3.5rem;}
+
+/* ---------- What we make ---------- */
+.make-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1.5rem;
+}
+.card{
+  background:var(--vb-charcoal);
+  border:1px solid var(--vb-line);
+  border-top:1px solid var(--vb-line);
+  border-radius:var(--r);
+  padding:2rem;
+  transition:transform var(--ease),background var(--ease),border-top-color var(--ease);
+}
+.card:hover{
+  transform:translateY(-4px);
+  background:var(--vb-charcoal-lift);
+  border-top-color:rgba(184,145,47,0.4);
+}
+.card h3{margin-bottom:0.75rem;}
+.card p{font-size:1rem;}
+
+.card-featured{
+  grid-column:span 2;
+  border-top:2px solid var(--vb-oak);
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:2rem;
+  align-items:stretch;
+  padding:0;
+  overflow:hidden;
+}
+.card-featured:hover{border-top-color:var(--vb-oak);}
+.card-featured img{
+  width:100%;
+  height:100%;
+  aspect-ratio:4/3;
+  object-fit:cover;
+  filter:saturate(0.92) contrast(1.06);
+}
+.card-featured .card-body{
+  padding-top:2rem;padding-bottom:2rem;padding-right:2rem;
+  align-self:center;
+}
+
+/* ---------- Why us split ---------- */
+.split{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:4rem;
+  align-items:center;
+}
+.split img{
+  width:100%;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  filter:saturate(0.92) contrast(1.06);
+}
+.why-list{list-style:none;margin:1.75rem 0 0;padding:0;}
+.why-list li{
+  padding-top:1rem;padding-bottom:1rem;
+  border-top:1px solid var(--vb-line);
+  display:flex;gap:1rem;align-items:baseline;
+}
+.why-list li:last-child{border-bottom:1px solid var(--vb-line);}
+.why-list .k{
+  font-family:'Archivo',sans-serif;
+  font-weight:700;
+  font-size:0.75rem;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--vb-gold);
+  flex:0 0 auto;
+  min-width:104px;
+}
+.why-list .v{font-size:1rem;}
+
+/* ---------- Gallery: clean rectangle at every breakpoint ---------- */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:1rem;
+}
+.gallery figure{margin:0;overflow:hidden;background:var(--vb-charcoal);}
+.gallery img{
+  width:100%;
+  aspect-ratio:4/3;
+  object-fit:cover;
+  filter:saturate(0.92) contrast(1.06);
+  transition:transform 0.4s ease,filter 0.4s ease;
+}
+.gallery figure:hover img{
+  transform:scale(1.04);
+  filter:saturate(1) contrast(1.06);
+}
+
+/* ---------- Reviews ---------- */
+.reviews-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
+.review{
+  background:var(--vb-charcoal);
+  border:1px solid var(--vb-line);
+  border-radius:var(--r);
+  padding:2rem;
+}
+.review blockquote{margin:0 0 1.5rem;font-size:1.0625rem;color:var(--vb-white);font-weight:400;}
+.review cite{
+  font-style:normal;
+  font-family:'Archivo',sans-serif;
+  font-weight:600;
+  font-size:0.8125rem;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:var(--vb-oak);
+}
+.review-score{
+  text-align:center;
+  margin-top:3rem;
+}
+.review-score .n{
+  display:block;
+  font-family:'Archivo',sans-serif;
+  font-weight:800;
+  font-size:3rem;
+  color:var(--vb-white);
+  line-height:1;
+}
+.review-score .l{
+  font-family:'Archivo',sans-serif;
+  font-size:0.75rem;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--vb-grey);
+}
+.review-link{margin-top:1.75rem;}
+
+/* ---------- Contact ---------- */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+.contact-panel{
+  background:var(--vb-charcoal);
+  border:1px solid var(--vb-line);
+  border-top:2px solid var(--vb-oak);
+  border-radius:var(--r);
+  padding:2.5rem;
+}
+.contact-list{list-style:none;margin:0 0 2rem;padding:0;}
+.contact-list li{
+  padding-top:1.1rem;padding-bottom:1.1rem;
+  border-bottom:1px solid var(--vb-line);
+}
+.contact-list li:last-child{border-bottom:0;}
+.contact-list .k{
+  display:block;
+  font-family:'Archivo',sans-serif;
+  font-weight:600;
+  font-size:0.7rem;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--vb-grey);
+  margin-bottom:0.3rem;
+}
+.contact-list .v{
+  font-family:'Archivo',sans-serif;
+  font-weight:600;
+  font-size:1.0625rem;
+  color:var(--vb-white);
+  text-decoration:none;
+  transition:color 0.25s ease;
+}
+a.v:hover{color:var(--vb-gold);}
+.contact-grid img{
+  width:100%;
+  aspect-ratio:16/10;
+  object-fit:cover;
+  filter:saturate(0.92) contrast(1.06);
+}
+
+/* ---------- Footer ---------- */
+.footer{
+  padding-top:3.5rem;padding-bottom:3.5rem;
+  border-top:1px solid var(--vb-line);
+}
+.footer .wrap{
+  display:grid;
+  grid-template-columns:1.2fr 1fr auto;
+  gap:2.5rem;
+  align-items:start;
+}
+.footer img{height:44px;width:auto;opacity:0.75;margin-bottom:1.1rem;}
+.footer p{font-size:0.875rem;margin:0 0 1.1rem;}
+.footer p:last-child{margin-bottom:0;}
+.footer a{color:var(--vb-grey);text-decoration:none;transition:color 0.25s ease;}
+.footer a:hover{color:var(--vb-gold);}
+.footer-contact a{color:var(--vb-white);}
+.footer-contact a:hover{color:var(--vb-gold);}
+
+.footer-social{
+  display:flex;
+  gap:0.75rem;
+  list-style:none;
+  margin:0;padding:0;
+  justify-self:end;
+}
+.footer-social a{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:44px;height:44px;
+  border:1px solid var(--vb-line);
+  border-radius:var(--r);
+  transition:border-color 0.25s ease,background 0.25s ease,transform 0.25s ease;
+}
+.footer-social svg{width:20px;height:20px;fill:var(--vb-grey);transition:fill 0.25s ease;}
+.footer-social a:hover{
+  border-color:var(--vb-gold);
+  background:var(--vb-charcoal);
+  transform:translateY(-2px);
+}
+.footer-social a:hover svg{fill:var(--vb-gold);}
+
+/* Directions link beside the workshop address */
+.map-link{
+  display:inline-flex;
+  align-items:center;
+  gap:0.4rem;
+  margin-top:0.7rem;
+  font-family:'Archivo',sans-serif;
+  font-weight:600;
+  font-size:0.75rem;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:var(--vb-gold);
+  text-decoration:none;
+  transition:color 0.25s ease;
+}
+.map-link svg{width:14px;height:14px;fill:currentColor;flex:0 0 auto;}
+.map-link:hover{color:var(--vb-gold-hi);}
+
+/* ---------- Reveal ---------- */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease;}
+.reveal.in{opacity:1;transform:none;}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{transition-duration:0.01ms !important;animation-duration:0.01ms !important;}
+  .reveal{opacity:1;transform:none;}
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width:1000px){
+  .make-grid{grid-template-columns:repeat(2,1fr);}
+  .card-featured{grid-column:span 2;}
+  .gallery{grid-template-columns:repeat(2,1fr);}
+  .split,.contact-grid{grid-template-columns:1fr;gap:2.5rem;}
+  .split img{aspect-ratio:16/10;}
+  .reviews-grid{grid-template-columns:1fr;}
+  .footer .wrap{grid-template-columns:1fr 1fr;}
+  .footer-social{grid-column:1 / -1;justify-self:start;}
+}
+
+@media (max-width:900px){
+  .nav{padding-left:20px;padding-right:20px;}
+  .burger{display:flex;}
+  .nav-links{
+    position:fixed;
+    top:80px;left:0;right:0;
+    flex-direction:column;
+    align-items:stretch;
+    gap:0;
+    background:rgba(13,13,13,0.98);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--vb-line);
+    padding-top:0.5rem;padding-bottom:1.5rem;
+    padding-left:20px;padding-right:20px;
+    transform:translateY(-140%);
+    opacity:0;
+    pointer-events:none;
+    transition:transform var(--ease),opacity var(--ease);
+  }
+  .nav.open .nav-links{
+    transform:translateY(0);
+    opacity:1;
+    pointer-events:auto;
+  }
+  .nav-links li{border-bottom:1px solid var(--vb-line);}
+  .nav-links li:last-child{border-bottom:0;padding-top:1.25rem;}
+  .nav-links a:not(.btn){display:block;padding-top:1.1rem;padding-bottom:1.1rem;font-size:0.9375rem;}
+  .nav-links .btn{display:block;text-align:center;}
+}
+
+@media (max-width:720px){
+  .section{padding-top:4.5rem;padding-bottom:4.5rem;}
+  .section-head{margin-bottom:2.5rem;}
+  .make-grid{grid-template-columns:1fr;}
+  .card-featured{
+    grid-column:span 1;
+    grid-template-columns:1fr;
+    gap:0;
+  }
+  .card-featured img{
+    aspect-ratio:16/10;
+    height:auto;
+  }
+  .card-featured .card-body{
+    padding-top:2rem;padding-bottom:2rem;
+    padding-left:2rem;padding-right:2rem;
+  }
+  .gallery{grid-template-columns:1fr;}
+  .hero{padding-top:7rem;}
+  .hero-cta{gap:0.75rem;}
+  .hero-cta .btn{width:100%;text-align:center;}
+  .trust li{font-size:0.9375rem;}
+  .why-list li{flex-direction:column;gap:0.25rem;}
+  .contact-panel{padding:1.75rem;}
+  .footer .wrap{grid-template-columns:1fr;gap:2rem;}
+  .footer-social{justify-self:start;}
+}
+
+@media (max-width:480px){
+  .nav-logo{height:44px;}
+  .nav-links{top:72px;}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <a href="#top" aria-label="Van Board home">
+    <img src="images/logo.png" alt="Van Board" class="nav-logo">
+  </a>
+  <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#what-we-make">What We Make</a></li>
+    <li><a href="#why">Why Van Board</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact" class="btn btn-primary">Get In Touch</a></li>
+  </ul>
+</nav>
+
+<header class="hero" id="top">
+  <img src="images/hero.jpg" alt="A converted campervan with its pop-up roof raised, outside the Van Board workshop" class="hero-img">
+  <div class="wrap">
+    <h1>Campervan furniture, built properly.</h1>
+    <p>Pre-designed kits and bespoke conversions — cut on our own CNC, finished in solid oak, and fitted to your van.</p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn btn-primary">Enquire About Your Build</a>
+      <a href="#gallery" class="btn btn-secondary">See The Work</a>
+    </div>
+    <ul class="trust">
+      <li>Made in-house</li>
+      <li>Solid oak worktops</li>
+      <li>Delivered nationwide</li>
+    </ul>
+  </div>
+</header>
+
+<main>
+
+<section class="section" id="what-we-make">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">What We Make</span>
+      <hr class="hairline">
+      <h2>Kits and conversions</h2>
+      <p class="lede">Every panel is cut on our own machine, so the fit is the same whether you're collecting a flat-pack or handing us the keys.</p>
+    </div>
+
+    <div class="make-grid">
+      <article class="card card-featured reveal">
+        <img src="images/featured-unit.jpg" alt="A Van Board bench unit, showing the CNC-cut slatted bed base and solid oak side">
+        <div class="card-body">
+          <span class="eyebrow">Featured</span>
+          <h3>Pre-Designed Furniture Kits</h3>
+          <p>Ready-to-fit units designed around specific vans. Slatted rock-and-roll bed base, radiused corners, flush-fit hardware and a solid oak top — supplied complete and delivered to your door.</p>
+        </div>
+      </article>
+
+      <article class="card reveal">
+        <h3>Bespoke Conversions</h3>
+        <p>Full camper builds carried out in our unit. You bring the van, we design and fit the interior around how you actually intend to use it.</p>
+      </article>
+
+      <article class="card reveal">
+        <h3>Kitchen &amp; Utility Units</h3>
+        <p>Hob, sink and fridge housings with the plumbing and 12V provision built in. Grey or white finish, oak worktop throughout.</p>
+      </article>
+
+      <article class="card reveal">
+        <h3>Storage &amp; Seating</h3>
+        <p>Pull-out drawers, overhead lockers, side benches and captain's seats — configured to fit around the bed and leave the floor clear.</p>
+      </article>
+
+      <article class="card reveal">
+        <h3>CNC Board Cutting</h3>
+        <p>The machine that makes the furniture is available for the panels behind it. Cut to your drawing, on our bed, in our unit.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="why">
+  <div class="wrap">
+    <div class="split">
+      <img src="images/workshop-cnc.jpg" alt="The CNC router bed inside the Van Board workshop, with a sheet loaded ready to cut" class="reveal">
+      <div class="reveal">
+        <span class="eyebrow">Why Van Board</span>
+        <hr class="hairline">
+        <h2>The machine is the difference</h2>
+        <p>Most campervan furniture is cut by hand. Ours isn't. Every panel comes off a CNC bed in our own unit, which is why the corners are radiused, the hardware sits flush, and the second kit fits exactly like the first.</p>
+        <p>It also means we're not tied to a catalogue. If your van isn't one we've done before, we draw it, cut it, and build it.</p>
+        <ul class="why-list">
+          <li><span class="k">In-house</span><span class="v">Designed, cut and built under one roof in Deeside.</span></li>
+          <li><span class="k">Materials</span><span class="v">Solid oak worktops. Not veneer, not laminate.</span></li>
+          <li><span class="k">Delivery</span><span class="v">Kits packed and delivered anywhere in the UK.</span></li>
+          <li><span class="k">Updates</span><span class="v">Progress photos through the build, not silence.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="gallery">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Gallery</span>
+      <hr class="hairline">
+      <h2>Recent builds</h2>
+      <p class="lede">Kits and full conversions across Caddy, Transit Custom, Alphard and more.</p>
+    </div>
+    <div class="gallery">
+      <figure class="reveal"><img src="images/gallery-01-kitchen.jpg" alt="Campervan kitchen unit with gas hob, sink and solid oak worktop" loading="lazy"></figure>
+      <figure class="reveal"><img src="images/gallery-02-kitchen-light.jpg" alt="Light-finish kitchen unit with oak worktop and fold-down bed" loading="lazy"></figure>
+      <figure class="reveal"><img src="images/gallery-03-rear-doors.jpg" alt="Rear doors open on a converted Caddy, with the fold-out oak table extended" loading="lazy"></figure>
+      <figure class="reveal"><img src="images/gallery-04-bed.jpg" alt="Rock-and-roll bed laid flat with the pop-up roof raised above" loading="lazy"></figure>
+      <figure class="reveal"><img src="images/gallery-05-interior.jpg" alt="Full camper interior with hob, worktop and tartan upholstered bed" loading="lazy"></figure>
+      <figure class="reveal"><img src="images/gallery-06-bench.jpg" alt="Rear seating bench with fold-out table and quilted leather upholstery" loading="lazy"></figure>
+      <figure class="reveal"><img src="images/gallery-07-drawer.jpg" alt="Full-width pull-out storage drawer extending from the rear of a Caddy" loading="lazy"></figure>
+      <figure class="reveal"><img src="images/gallery-08-seats.jpg" alt="Converted interior with bucket seats, grey units and oak worktop" loading="lazy"></figure>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="reviews">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Reviews</span>
+      <hr class="hairline">
+      <h2>What customers say</h2>
+    </div>
+    <div class="reviews-grid">
+      <article class="review reveal">
+        <blockquote>Took our Toyota Alphard to Ian and Melissa for a conversion and from the moment we met them we knew we'd found the perfect team for the job. The whole build from start to finish was carried out professionally and the quality and craftsmanship from both was truly exceptional. Regular updates on the build progress were provided and I can't recommend them enough.</blockquote>
+        <cite>Martyn Joinson</cite>
+      </article>
+      <article class="review reveal">
+        <blockquote>Had 2 sets off caddy furniture amazing quality and well built. Melissa was very helpful with my 1000 questions. Quick turn around and even delivered — thanks again.</blockquote>
+        <cite>Ben Richardson</cite>
+      </article>
+    </div>
+    <div class="review-score reveal">
+      <hr class="hairline center">
+      <span class="n">100%</span>
+      <span class="l">Recommend &middot; 20 reviews on Facebook</span>
+      <a href="https://www.facebook.com/VanBoardLtd/reviews/?id=61556991031523&amp;sk=reviews"
+         class="btn btn-secondary review-link"
+         target="_blank" rel="noopener">Read All Reviews On Facebook</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="reveal">
+        <span class="eyebrow">Get In Touch</span>
+        <hr class="hairline">
+        <h2>Tell us about your van</h2>
+        <p class="lede">Whether it's a kit for a Caddy or a full conversion, send us the vehicle and what you want out of it and we'll come back to you.</p>
+        <img src="images/premises.jpg" alt="The Van Board unit on Evans Way, Shotton" loading="lazy" style="margin-top:2rem;">
+      </div>
+      <div class="contact-panel reveal">
+        <ul class="contact-list">
+          <li>
+            <span class="k">Call</span>
+            <a class="v" href="tel:+447833592997">07833 592997</a>
+          </li>
+          <li>
+            <span class="k">Email</span>
+            <a class="v" href="mailto:sales@vanboard.co.uk">sales@vanboard.co.uk</a>
+          </li>
+          <li>
+            <span class="k">Instagram</span>
+            <a class="v" href="https://www.instagram.com/vanboardltd" target="_blank" rel="noopener">@vanboardltd</a>
+          </li>
+          <li>
+            <span class="k">Facebook</span>
+            <a class="v" href="https://www.facebook.com/VanBoardLtd" target="_blank" rel="noopener">Van Board</a>
+          </li>
+          <li>
+            <span class="k">Workshop</span>
+            <span class="v" style="display:block;line-height:1.5;">Unit 7, Evans Way<br>Shotton, Deeside<br>Flintshire CH5 1QJ</span>
+            <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Van+Board%2C+Unit+7+Evans+Way%2C+Shotton%2C+Deeside%2C+Flintshire+CH5+1QJ"
+               class="map-link" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/>
+              </svg>
+              Get directions
+            </a>
+          </li>
+        </ul>
+        <a href="https://wa.me/447833592997?text=Hi%20Van%20Board%2C%20I%27d%20like%20to%20ask%20about%20a%20build%20for%20my%20van."
+           class="btn btn-primary btn-whatsapp"
+           target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.06 2.88 1.21 3.08c.15.2 2.09 3.2 5.07 4.49.71.3 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35z"/>
+            <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.13h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.36c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.69 8.24-8.24 8.24z"/>
+          </svg>
+          Message Us On WhatsApp
+        </a>
+        <p class="cta-note">Opens WhatsApp with your message ready to send.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-brand">
+      <img src="images/logo.png" alt="Van Board">
+      <p>Pre-Designed &amp; Bespoke Campervan Furniture<br>Deeside, Flintshire</p>
+    </div>
+
+    <div class="footer-contact">
+      <p>
+        <a href="tel:+447833592997">07833 592997</a><br>
+        <a href="mailto:sales@vanboard.co.uk">sales@vanboard.co.uk</a>
+      </p>
+      <p>
+        Unit 7, Evans Way, Shotton<br>
+        Deeside, Flintshire CH5 1QJ<br>
+        <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Van+Board%2C+Unit+7+Evans+Way%2C+Shotton%2C+Deeside%2C+Flintshire+CH5+1QJ" target="_blank" rel="noopener">Get directions</a>
+      </p>
+    </div>
+
+    <ul class="footer-social">
+      <li>
+        <a href="https://www.facebook.com/VanBoardLtd" target="_blank" rel="noopener" aria-label="Van Board on Facebook">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.52 1.49-3.91 3.77-3.91 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57v1.89h2.78l-.45 2.91h-2.33V22c4.78-.76 8.44-4.92 8.44-9.94z"/>
+          </svg>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.instagram.com/vanboardltd" target="_blank" rel="noopener" aria-label="Van Board on Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.3-1.46.72-2.13 1.38C1.35 2.68.93 3.35.63 4.14.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.3.79.72 1.46 1.38 2.13.67.66 1.34 1.08 2.13 1.38.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.3 1.46-.72 2.13-1.38.66-.67 1.08-1.34 1.38-2.13.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.3-.79-.72-1.46-1.38-2.13C21.32 1.35 20.65.93 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0z"/>
+            <path d="M12 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32zm0 10.16a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/>
+            <circle cx="18.41" cy="5.59" r="1.44"/>
+          </svg>
+        </a>
+      </li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var nav = document.getElementById('nav');
+  var burger = document.getElementById('burger');
+  var links = document.getElementById('nav-links');
+
+  // Burger toggle
+  burger.addEventListener('click', function(){
+    var open = nav.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  // Close the menu after tapping a link
+  links.addEventListener('click', function(e){
+    if (e.target.tagName === 'A') {
+      nav.classList.remove('open');
+      burger.setAttribute('aria-expanded','false');
+    }
+  });
+
+  // Darken nav on scroll
+  function onScroll(){
+    if (window.scrollY > 80) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  }
+  onScroll();
+  window.addEventListener('scroll', onScroll, {passive:true});
+
+  // Scroll reveals
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var items = document.querySelectorAll('.reveal');
+  if (reduce || !('IntersectionObserver' in window)) {
+    items.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, {threshold: 0.12, rootMargin: '0px 0px -40px 0px'});
+    items.forEach(function(el){ io.observe(el); });
+  }
+
+  // Active nav link on scroll
+  var sections = document.querySelectorAll('main section[id]');
+  var navAnchors = links.querySelectorAll('a:not(.btn)');
+  window.addEventListener('scroll', function(){
+    var pos = window.scrollY + 140;
+    var current = '';
+    sections.forEach(function(s){
+      if (pos >= s.offsetTop) current = s.id;
+    });
+    navAnchors.forEach(function(a){
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  }, {passive:true});
+})();
+</script>
+
+</body>
+</html>
